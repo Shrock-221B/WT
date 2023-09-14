@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            display: flex;
+            background: #f44336;
+            height: 100vh;
+        }
+
+        .carom {
+            margin: auto;
+        }
+
+        .border {
+            height: 300px;
+            width: 300px;
+            border: 1.5em solid #353535;
+            border-radius: 10px;
+            background: #F6D784;
+            display: flex;
+        }
+
+        .box-1 {
+            display: flex;
+            border: 0.1em solid #333;
+            height: 245px;
+            width: 245px;
+            margin: auto;
+        }
+
+        .box-2 {
+            display: flex;
+            flex-direction: column;
+            border: 0.1em solid #333;
+            height: 210px;
+            width: 210px;
+            margin: auto;
+        }
+
+        /* circle */
+        .circle {
+            margin: auto;
+            height: 100px;
+            width: 100px;
+            border: 0.4em solid red;
+            border-radius: 50%;
+            display: flex;
+        }
+
+        .inner-circle {
+            margin: auto;
+            height: 80px;
+            width: 80px;
+            border: 0.01em solid #333;
+            border-radius: 50%;
+            display: flex;
+        }
+
+        .center-circle {
+            margin: auto;
+            height: 50px;
+            width: 50px;
+            background: red;
+            border-radius: 50%;
+        }
+
+        /* pocket */
+        .pockets {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            place-content: flex-start space-between;
+            align-items: flex-start;
+        }
+
+        .upper-pockets {
+            flex: 1;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            place-content: flex-start space-between;
+            align-items: flex-start;
+        }
+
+        .lower-pockets {
+            display: flex;
+            flex-direction: column;
+            place-content: flex-start space-between;
+            align-items: flex-end;
+            flex: 1;
+            height: 300px;
+        }
+
+        .pocket {
+            background: #333;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+        }
+
+        /* Coin Potting Animation */
+        .coin {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #FFD700; /* Gold color for the coin */
+            border-radius: 50%;
+            animation: potCoin 2s linear;
+        }
+
+        @keyframes potCoin {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(150px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="carom">
+            <div class="border">
+                <div class="pockets">
+                    <div class="upper-pockets">
+                        <div class="pocket one"></div>
+                        <div class="pocket two"></div>
+                    </div>
+                    <div class="box-1">
+                        <div class="box-2">
+                            <div class="circle">
+                                <div class="inner-circle">
+                                    <div class="center-circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="lower-pockets">
+                        <div class="pocket three"></div>
+                        <div class="pocket four"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="coin"></div>
+</body>
+</html>

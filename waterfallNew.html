@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waterfall Animation</title>
+    <style>
+        body {
+            background: #778899;
+        }
+
+        .container {
+            height: 0;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+        }
+
+        .waterfall {
+            background: #6cbcd4;
+            border-radius: 5px;
+            height: 300px;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+        }
+
+        .rock {
+            position: relative;
+            width: 500px;
+            height: 310px;
+            background: grey;
+
+            &.right {
+                transform: translate(40%, -50%);
+            }
+
+            &.left {
+                transform: translate(-100%, -50%);
+            }
+        }
+
+        .pool {
+            align-items: baseline;
+            height: 100%;
+            width: 105%;
+            position: relative;
+            display: flex;
+        }
+
+        .cascade {
+            background: white;
+            border-radius: 100%;
+            margin-left: -10px;
+            position: relative;
+
+            &.s {
+                height: 20px;
+                width: 20px;
+                box-shadow: 1px 1px 1px rgba(68, 68, 68, 0.2);
+                z-index: 4;
+            }
+
+            &.m {
+                height: 30px;
+                width: 30px;
+                box-shadow: 1px 1px 1px rgba(68, 68, 68, 0.3);
+                z-index: 2;
+            }
+
+            &.l {
+                height: 40px;
+                width: 40px;
+                box-shadow: 1px 1px 1px rgba(68, 68, 68, 0.1);
+                z-index: 3;
+            }
+
+            &.slow {
+                animation-duration: .4s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+            }
+
+            &.medium {
+                animation-duration: .2s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+            }
+
+            &.fast {
+                animation-duration: .1s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+            }
+
+            &.vertical {
+                animation-name: cascade_vertical;
+            }
+
+            &.horizontal {
+                animation-name: cascade_horizontal;
+            }
+
+            &.diagonal {
+                animation-name: cascade_diagonal;
+            }
+        }
+
+        .water {
+            display: flex;
+            height: 100%;
+            overflow-y: hidden;
+            position: absolute;
+            width: 100%;
+        }
+
+        .fall {
+            position: relative;
+            border-radius: 5px;
+            animation-name: falling_water;
+            margin-left: 5px;
+
+            &.s {
+                height: 30px;
+                width: 5px;
+                box-shadow: 1px 1px 1px rgba(68, 68, 68, 0.2);
+            }
+
+            &.m {
+                height: 60px;
+                width: 10px;
+                box-shadow: 1px 1px 1px rgba(68, 68, 68, 0.2);
+            }
+
+            &.l {
+                height: 120px;
+                width: 12px;
+                box-shadow: 1px 1px 1px rgba(68, 68, 68, 0.2);
+            }
+
+            &.slow {
+                animation-duration: 1s;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in;
+            }
+
+            &.medium {
+                animation-duration: .8s;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in;
+            }
+
+            &.fast {
+                animation-duration: .4s;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in;
+            }
+
+            &.delay {
+                animation-delay: .5s;
+            }
+
+            &.delay-long {
+                animation-delay: 1s;
+            }
+
+            &.teal {
+                background: #45adbd;
+            }
+
+            &.light-blue {
+                background: #92d0d8;
+            }
+        }
+
+        @keyframes cascade_vertical {
+            0% {top: 90%; left: 0%;}
+            33% {top: 90%; left: 1%;}
+            66% {top: 90%; left: 1%;}
+            100% {top: 90%; left: 0%;}
+        }
+
+        @keyframes cascade_horizontal {
+            0% {top: 89%; left: 0%;}
+            33% {top: 89%; left: 0%;}
+            66% {top: 90%; left: 0%;}
+            100% {top: 90%; left: 0%;}
+        }
+
+        @keyframes cascade_diagonal {
+            0% {top: 89%; left: 0%;}
+            100% {top: 90%; left: 1%;}
+        }
+
+        @keyframes falling_water {
+            0% {top: 0%; height: 30px}
+            100% {top: 90%;}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="waterfall">
+            <div class="water">
+                <div class="fall s medium delay light-blue"></div>
+                <div class="fall l fast delay teal"></div>
+                <div class="fall m slow light-blue"></div>
+                <div class="fall l fast delay-long light-blue"></div>
+                <div class="fall s medium teal"></div>
+                <div class="fall l medium delay teal"></div>
+                <div class="fall m slow delay light-blue"></div>
+                <div class="fall s fast light-blue"></div>
+                <div class="fall m slow teal"></div>
+                <div class="fall m fast delay light-blue"></div>
+                <div class="fall l medium teal"></div>
+                <div class="fall s slow delay teal"></div>
+                <div class="fall l medium light-blue"></div>
+                <div class="fall s slow delay-long light-blue"></div>
+                <div class="fall l fast teal"></div>
+                <div class="fall m medium light-blue"></div>
+                <div class="fall l slow delay light-blue"></div>
+                <div class="fall m medium delay-long teal"></div>
+                <div class="fall s fast teal"></div>
+                <div class="fall s fast light-blue"></div>
+                <div class="fall l medium teal"></div>
+                <div class="fall m slow delay-long light-blue"></div>
+                <div class="fall l fast light-blue"></div>
+                <div class="fall s slow delay teal"></div>
+                <div class="fall m slow delay light-blue"></div>
+                <div class="fall l fast delay teal"></div>
+                <div class="fall m slow light-blue"></div>
+                <div class="fall l fast delay-long light-blue"></div>
+                <div class="fall m fast delay light-blue"></div>
+                <div class="fall l medium teal"></div>
+                <div class="fall s slow delay teal"></div>
+                <div class="fall l medium light-blue"></div>
+            </div>
+            <div class="pool">
+                <div class="cascade s medium horizontal"></div>
+                <div class="cascade m slow diagonal"></div>
+                <div class="cascade l medium vertical"></div>
+                <div class="cascade m slow vertical"></div>
+                <div class="cascade s slow horizontal"></div>
+                <div class="cascade m medium horizontal"></div>
+                <div class="cascade l slow vertical"></div>
+                <div class="cascade m slow horizontal"></div>
+                <div class="cascade s fast vertical"></div>
+                <div class="cascade l medium vertical"></div>
+                <div class="cascade m slow horizontal"></div>
+                <div class="cascade s slow diagonal"></div>
+                <div class="cascade m medium vertical"></div>
+                <div class="cascade l fast horizontal"></div>
+                <div class="cascade m medium diagonal"></div>
+                <div class="cascade m slow vertical"></div>
+                <div class="cascade s medium horizontal"></div>
+                <div class="cascade l medium diagonal"></div>
+                <div class="cascade m slow horizontal"></div>
+                <div class="cascade m slow diagonal"></div>
+                <div class="cascade s medium horizontal"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
