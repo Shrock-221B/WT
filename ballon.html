@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon Popping Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #87CEEB;
+            margin: 0;
+        }
+
+        .container {
+            position: relative;
+            width: 100px;
+            height: 200px;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 150px;
+            background-color: #FF69B4;
+            border-radius: 50% 50% 60% 60% / 70% 70% 30% 30%;
+            transform-origin: bottom center;
+            animation: balloon-float 4s ease-in-out infinite, pop 0.5s forwards 4s;
+        }
+
+       
+
+        @keyframes balloon-float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="balloon">
+            <div class="balloon-string"></div>
+        </div>
+    </div>
+</body>
+</html>
